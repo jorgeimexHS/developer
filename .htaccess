@@ -1,0 +1,20 @@
+
+<IfModule mod_rewrite.c>
+     
+    RewriteEngine on
+
+    # Si el archivo no es un directorio
+    RewriteCond %{REQUEST_FILENAME} !-d
+     
+    # Si la consulta tiene extension .php
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.php\ HTTP
+     
+    # Y no es un directorio
+    RewriteCond %{REQUEST_URI} !-d
+     
+    # "Redirigir" normal cualquier numero,letra y barra (-)
+    # y no hacer nada mas.
+    RewriteRule prueba/prueba core/controllers/marketing/index.php
+    RewriteRule tester/([a-zA-Z0-9-]*)$ core/controller/saveController.php?action=$1 [L]    
+          
+</IfModule>
